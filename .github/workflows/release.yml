@@ -41,8 +41,11 @@ jobs:
           # https://github.com/semantic-release/commit-analyzer/issues/65
           # https://github.com/romap0/semantic-release-unsquash/issues/7
           extra_plugins: |
+            @semantic-release/commit-analyzer@latest
+            @semantic-release/release-notes-generator@latest
             @semantic-release/changelog@latest
             @semantic-release/git@latest
+            @semantic-release/github@latest
             conventional-changelog-conventionalcommits@latest
         env:
           # Use the token with bypass permissions
