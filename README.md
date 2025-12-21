@@ -1,7 +1,7 @@
 ![PHP Version](https://img.shields.io/packagist/php-v/wp-spaghetti/wp-boot)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/wp-spaghetti/wp-boot)
 ![Packagist Stars](https://img.shields.io/packagist/stars/wp-spaghetti/wp-boot)
-![GitHub Actions Workflow Status](https://github.com/wp-spaghetti/wp-boot/actions/workflows/main.yml/badge.svg)
+![GitHub Actions Workflow Status](https://github.com/wp-spaghetti/wp-boot/actions/workflows/release.yml/badge.svg)
 ![Coverage Status](https://img.shields.io/codecov/c/github/wp-spaghetti/wp-boot)
 ![Known Vulnerabilities](https://snyk.io/test/github/wp-spaghetti/wp-boot/badge.svg)
 ![GitHub Issues](https://img.shields.io/github/issues/wp-spaghetti/wp-boot)
