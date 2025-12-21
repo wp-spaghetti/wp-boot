@@ -1,0 +1,13 @@
+# Dotenv
+.env
+.env.*
+!.env.dist
+
+# Composer
+/vendor
+composer*.lock
+auth.json
+
+# Claude
+/.claude*
+/venv

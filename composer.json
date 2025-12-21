@@ -1,0 +1,80 @@
+{
+  "name": "wp-spaghetti/wp-boot",
+  "description": "Wp-Boot is a lightweight Composer-based WordPress management system",
+  "license": "GPL-3.0-or-later",
+  "type": "project",
+  "keywords": [
+    "wp-boot",
+    "composer",
+    "wordpress",
+    "wp"
+  ],
+  "authors": [
+    {
+      "name": "Frugan",
+      "email": "dev@frugan.it",
+      "homepage": "https://github.com/frugan-dev",
+      "role": "Developer"
+    }
+  ],
+  "funding": [
+    {
+      "type": "custom",
+      "url": "https://buymeacoff.ee/frugan"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "composer/installers": "^2.2",
+    "johnpbloch/wordpress": "6.9.0",
+    "oscarotero/env": "^2.1",
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "require-dev": {
+    "ergebnis/composer-normalize": "^2.48",
+    "friendsofphp/php-cs-fixer": "^3.89"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true,
+      "ergebnis/composer-normalize": true,
+      "johnpbloch/wordpress-core-installer": true
+    },
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "extra": {
+    "installer-paths": {
+      "../../public/wp-content/mu-plugins/{$name}/": [
+        "type:wordpress-muplugin"
+      ],
+      "../../public/wp-content/plugins/{$name}/": [
+        "type:wordpress-plugin"
+      ],
+      "../../public/wp-content/themes/{$name}/": [
+        "type:wordpress-theme"
+      ]
+    },
+    "wordpress-install-dir": "vendor/wordpress"
+  },
+  "scripts": {
+    "post-install-cmd": "@post-cmd",
+    "post-update-cmd": "@post-cmd",
+    "lint": "@lint:fix --dry-run",
+    "lint:fix": "@php ./vendor/bin/php-cs-fixer fix --diff --using-cache=no",
+    "post-cmd": "./post-cmd.sh ../../public"
+  }
+}

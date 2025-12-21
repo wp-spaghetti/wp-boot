@@ -1,0 +1,8 @@
+# Include only WordPress core directories
++ wp-admin/
++ wp-admin/**
++ wp-includes/
++ wp-includes/**
+
+# Exclude everything else
+- *
