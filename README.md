@@ -69,7 +69,23 @@ composer create-project wp-spaghetti/wp-boot private/wp-boot
 cd private/wp-boot
 cp .env.dist .env
 # Edit .env with your configuration
+# IMPORTANT: Set WP_BOOT_SYNC_ENABLED=true to enable WordPress sync
 ```
+
+**Note:** During `composer create-project`, WordPress core will be downloaded to `vendor/wordpress/`, but files will **not** be synced to your `public/` directory until you set `WP_BOOT_SYNC_ENABLED=true` in your `.env` file.
+
+This gives you time to:
+1. Review and configure your `.env` file
+2. Verify the target `public/` directory exists and is correct
+3. Decide when to sync WordPress files
+
+Once configured, run:
+
+```bash
+composer install  # or composer update
+```
+
+This will trigger the sync script and copy WordPress core files to `../../public/`.
 
 Then add the bootstrap block to your `wp-config.php` file (see "How It Works" section above).
 

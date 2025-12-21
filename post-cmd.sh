@@ -18,8 +18,40 @@ _check_dependencies() {
 	fi
 }
 
+_load_env_files() {
+	local env_file=".env"
+	local env_files=("${env_file}")
+
+	# Check for environment-specific .env files (same logic as bootstrap.php)
+	if [[ -n "${APP_ENV:-}" ]]; then
+		env_files+=("${env_file}.${APP_ENV}")
+	fi
+
+	# Load .env files in order (later files override earlier ones)
+	for file in "${env_files[@]}"; do
+		if [[ -f "${file}" ]]; then
+			echo "Loading environment from: ${file}"
+			# Export variables while preserving quotes and handling comments
+			set -a
+			# shellcheck disable=SC1090
+			source <(grep -v '^[[:space:]]*#' "${file}" | grep -v '^[[:space:]]*$')
+			set +a
+		fi
+	done
+}
+
 main() {
 	_check_dependencies
+
+	# Load .env files
+	_load_env_files
+
+	# Check if sync is enabled
+	if [[ "${WP_BOOT_SYNC_ENABLED:-false}" != "true" ]]; then
+		echo "WordPress sync is disabled (WP_BOOT_SYNC_ENABLED is not set to 'true')."
+		echo "To enable sync, set WP_BOOT_SYNC_ENABLED=true in your .env file."
+		exit 0
+	fi
 
 	if [[ "$#" -lt 1 ]]; then
 		echo "Missing argument 'dest'." >&2
