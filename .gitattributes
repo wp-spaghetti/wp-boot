@@ -1,5 +1,6 @@
 # Exclude files from Composer package archives
 /.github export-ignore
+/.gitattributes export-ignore
 /.releaserc.json export-ignore
 /codecov.yml export-ignore
 /commitlint.config.mjs export-ignore
