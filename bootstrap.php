@@ -115,19 +115,6 @@ try {
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, $envs, false);
     $dotenv->load();
     $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD']);
-
-    // https://github.com/vlucas/phpdotenv/issues/231#issuecomment-663879815
-    foreach ($_ENV as $key => $val) {
-        if (ctype_digit((string) $val)) {
-            $dotenv->required($key)->isInteger();
-            $_ENV[$key] = (int) $val;
-        } elseif (!empty($val) && !is_numeric($val) && ($newVal = filter_var($_ENV[$key], \FILTER_VALIDATE_BOOLEAN, \FILTER_NULL_ON_FAILURE)) !== null) {
-            $dotenv->required($key)->isBoolean();
-            $_ENV[$key] = $newVal;
-        } elseif (empty($val) || 'null' === mb_strtolower((string) $val, 'UTF-8')) {
-            $_ENV[$key] = null;
-        }
-    }
 } catch (Exception $e) {
     // https://github.com/phpro/grumphp/blob/master/doc/tasks/phpparser.md#no_exit_statements
     exit($e->getMessage());
