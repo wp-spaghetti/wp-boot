@@ -1,6 +1,6 @@
 {
   "name": "wp-spaghetti/wp-boot",
-  "description": "Wp-Boot is a lightweight Composer-based WordPress management system",
+  "description": "WP Boot is a lightweight Composer-based WordPress management system",
   "license": "GPL-3.0-or-later",
   "type": "project",
   "keywords": [
@@ -74,7 +74,7 @@
     "post-install-cmd": "@post-cmd",
     "post-update-cmd": "@post-cmd",
     "lint": "@lint:fix --dry-run",
-    "lint:fix": "@php ./vendor/bin/php-cs-fixer fix --diff --using-cache=no",
+    "lint:fix": "@php -d max_execution_time=0 -d memory_limit=-1 -f ./vendor/bin/php-cs-fixer fix --diff --using-cache=no",
     "post-cmd": "./post-cmd.sh ../../public"
   }
 }

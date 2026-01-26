@@ -1,4 +1,4 @@
-# Exclude files from Composer package archives
+# Exclude files and directories from Git archives (including Packagist)
 /.github export-ignore
 /.gitattributes export-ignore
 /.releaserc.json export-ignore
