@@ -118,59 +118,33 @@ The `post-cmd.sh` script automatically syncs WordPress core files from `private/
 
 ## Optional: Installing Language Packs
 
-WordPress core and plugins can be installed in different languages using Composer.
+WP Boot includes [WP Translation Downloader](https://github.com/inpsyde/wp-translation-downloader), a Composer plugin that automatically downloads translations from the WordPress.org API for all installed WordPress packages (core, plugins, and themes).
 
-**1. Add the language repository to `composer.json`:**
-```json
-{
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://wp-languages.github.io",
-      "only": [
-        "koodimonni-language/*",
-        "koodimonni-plugin-language/*",
-        "koodimonni-theme-language/*"
-      ]
-    }
-  ]
-}
-```
+**1. Add your desired languages to `composer.json`:**
 
-**2. Add dropin paths to `extra` in `composer.json`:**
+In the `extra.wp-translation-downloader.languages` array, add the locale codes you need:
+
 ```json
 {
   "extra": {
-    "dropin-paths": {
-      "../../public/wp-content/languages/": [
-        "vendor:koodimonni-language"
-      ],
-      "../../public/wp-content/languages/plugins/": [
-        "vendor:koodimonni-plugin-language"
-      ],
-      "../../public/wp-content/languages/themes/": [
-        "vendor:koodimonni-theme-language"
+    "wp-translation-downloader": {
+      "languages": [
+        "it_IT"
       ]
     }
   }
 }
 ```
 
-**3. Install language packs:**
-```bash
-# WordPress core in Italian
-composer require koodimonni-language/core-it_it
+Then run `composer update` — translations will be automatically downloaded to `public/wp-content/languages/`.
 
-# All translations for Italian
-composer require koodimonni-language/it_it
-```
+**2. Configure WordPress to use the language in `.env`:**
 
-**4. Configure WordPress to use the language in `.env`:**
 ```env
 WPLANG=it_IT
 ```
 
-For more information: https://wp-languages.github.io
+For more information: https://github.com/inpsyde/wp-translation-downloader
 
 ## Optional: Disallow Search Engine Indexing in Non-Production
 
@@ -201,6 +175,7 @@ For new projects or when you have full control over the infrastructure, consider
 - **[WP Starter](https://github.com/wecodemore/wpstarter)** - Composer-based WordPress setup with flexible configuration
 - **[Wordplate](https://github.com/vinkla/wordplate)** - Modern WordPress stack with Laravel-inspired structure
 - **[WordPress Project](https://github.com/johnpbloch/wordpress-project)** - Minimal Composer-based WordPress installer
+- **[WP Bootstrap](https://github.com/eriktorsner/wp-bootstrap)** - Utils for bootstrapping a WordPress installation
 
 ## References
 
@@ -239,5 +214,5 @@ See [CONTRIBUTING](.github/CONTRIBUTING.md) for detailed guidelines.
 
 ## License
 
-(ɔ) Copyleft 2025 [Frugan](https://frugan.it).  
+(ɔ) Copyleft 2026 [Frugan](https://frugan.it).  
 [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/), see [LICENSE](LICENSE) file.

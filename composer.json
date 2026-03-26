@@ -26,6 +26,7 @@
   "require": {
     "php": ">=8.1",
     "composer/installers": "^2.2",
+    "inpsyde/wp-translation-downloader": "^2.6",
     "johnpbloch/wordpress": "6.9.4",
     "oscarotero/env": "^2.1",
     "vlucas/phpdotenv": "^5.5"
@@ -36,11 +37,12 @@
   },
   "repositories": [
     {
+      "name": "wp-packages",
       "type": "composer",
-      "url": "https://wpackagist.org",
+      "url": "https://repo.wp-packages.org",
       "only": [
-        "wpackagist-plugin/*",
-        "wpackagist-theme/*"
+        "wp-plugin/*",
+        "wp-theme/*"
       ]
     }
   ],
@@ -50,6 +52,7 @@
     "allow-plugins": {
       "composer/installers": true,
       "ergebnis/composer-normalize": true,
+      "inpsyde/wp-translation-downloader": true,
       "johnpbloch/wordpress-core-installer": true
     },
     "optimize-autoloader": true,
@@ -68,7 +71,11 @@
         "type:wordpress-theme"
       ]
     },
-    "wordpress-install-dir": "vendor/wordpress"
+    "wordpress-install-dir": "vendor/wordpress",
+    "wp-translation-downloader": {
+      "languageRootDir": "../../public/wp-content/languages",
+      "languages": []
+    }
   },
   "scripts": {
     "post-install-cmd": "@post-cmd",

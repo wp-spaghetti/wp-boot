@@ -123,7 +123,7 @@ try {
 /**
  * Set WordPress environment type based on WP_ENV
  * Uses WordPress 5.5+ native WP_ENVIRONMENT_TYPE
- * Accepted values: 'local', 'development', 'staging', 'production'
+ * Accepted values: 'local', 'development', 'staging', 'production'.
  */
 $wp_env = env('WP_ENV') ?: 'production';
 if (!defined('WP_ENVIRONMENT_TYPE') && in_array($wp_env, ['local', 'development', 'staging', 'production'], true)) {
