@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0](https://github.com/wp-spaghetti/wp-boot/compare/v1.1.3...v1.2.0) (2026-03-26)
+
+### Features
+
+* move from koodimonni-language to inpsyde/wp-translation-downloader ([f1d6bf3](https://github.com/wp-spaghetti/wp-boot/commit/f1d6bf31adc9613b68d49f4cb19d10a7979f7787))
+
+### Bug Fixes
+
+* remove carriage return in _load_env_files ([9eda1c0](https://github.com/wp-spaghetti/wp-boot/commit/9eda1c04f7105ee1a05ae11b04fb49ba05a2b3f9))
+
 ## [1.1.3](https://github.com/wp-spaghetti/wp-boot/compare/v1.1.2...v1.1.3) (2026-01-26)
 
 ### Performance Improvements
