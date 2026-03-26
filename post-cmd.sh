@@ -33,8 +33,9 @@ _load_env_files() {
 			echo "Loading environment from: ${file}"
 			# Export variables while preserving quotes and handling comments
 			set -a
+			# Removes carriage return (\r) characters for Windows/DOS compatibility
 			# shellcheck disable=SC1090
-			source <(grep -v '^[[:space:]]*#' "${file}" | grep -v '^[[:space:]]*$')
+			source <(grep -v '^[[:space:]]*#' "${file}" | grep -v '^[[:space:]]*$' | tr -d '\r')
 			set +a
 		fi
 	done
