@@ -112,7 +112,19 @@ if (!empty($_SERVER['APP_ENV'])) {
 $envs = array_unique(array_filter($envs));
 
 try {
-    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__, $envs, false);
+    // NOTE: We use createUnsafeImmutable (not createImmutable) so that
+    // dotenv-loaded variables are also exposed via getenv() in addition
+    // to $_ENV / $_SERVER. Many WordPress plugins and libraries read
+    // configuration via getenv() and silently fall back to defaults when
+    // the variable is missing — causing hard-to-diagnose bugs.
+    //
+    // Thread-safety caveat: getenv()/putenv() are documented as not
+    // thread-safe in phpdotenv. This only matters on PHP ZTS builds with a
+    // multi-threaded SAPI (e.g. Apache mod_php with MPM worker/event).
+    // Standard PHP-FPM and CLI deployments — the expected targets for
+    // WordPress installations using wp-boot — are single-threaded per
+    // request and unaffected.
+    $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__, $envs, false);
     $dotenv->load();
     $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD']);
 } catch (Exception $e) {

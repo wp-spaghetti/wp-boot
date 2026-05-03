@@ -11,7 +11,7 @@ updates:
     assignees:
       - "frugan-dev"
     commit-message:
-      prefix: "chore"
+      prefix: "deps"
       include: "scope"
     labels:
       - "dependencies"
@@ -27,7 +27,7 @@ updates:
     assignees:
       - "frugan-dev"
     commit-message:
-      prefix: "chore"
+      prefix: "ci"
       include: "scope"
     labels:
       - "dependencies"
