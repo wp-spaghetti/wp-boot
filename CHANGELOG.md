@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1](https://github.com/wp-spaghetti/wp-boot/compare/v1.2.0...v1.2.1) (2026-05-03)
+
+### Bug Fixes
+
+* expose dotenv variables via getenv() for WordPress library compatibility ([3653a5a](https://github.com/wp-spaghetti/wp-boot/commit/3653a5ae9b94b17eeee7d7e57a823dd5f499ccf5))
+
 ## [1.2.0](https://github.com/wp-spaghetti/wp-boot/compare/v1.1.3...v1.2.0) (2026-03-26)
 
 ### Features
