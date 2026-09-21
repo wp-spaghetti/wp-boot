@@ -27,7 +27,7 @@
     "php": ">=8.1",
     "composer/installers": "^2.2",
     "inpsyde/wp-translation-downloader": "^2.6",
-    "johnpbloch/wordpress": "6.9.4",
+    "johnpbloch/wordpress": "7.1.1",
     "oscarotero/env": "^2.1",
     "vlucas/phpdotenv": "^5.5"
   },
